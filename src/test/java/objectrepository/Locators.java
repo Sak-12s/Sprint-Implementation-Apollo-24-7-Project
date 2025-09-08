@@ -22,7 +22,9 @@ public class Locators {
 	public static By lastnameinput = By.xpath("//input[@placeholder='Last name']");
 	public static By dobinput = By.xpath("//input[@placeholder='dd/mm/yyyy']");
 	public static By relationdropdown = By.xpath("/html/body/main/div/div/div/div[2]/div/div[4]/div/div[2]/div[1]/div/div[3]/div/div");
+	public static By emailinput = By.xpath("//input[@placeholder='name@email.com']");
 	public static By savebtn = By.xpath("//span[text()='Save']");
 	public static By confirmbtn = By.xpath("//span[text()='CONFIRM']");
 	public static By okbtn = By.xpath("//span[text()='OK']");
+	public static By profileclosebtn = By.xpath("//button[@title='Close']");
 }

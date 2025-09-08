@@ -20,7 +20,9 @@ public class Hooks extends Base {
 	static ExtentReports extReports;
 	static ExtentTest extTest;
 	
-	public static int currentRow = 0;
+	public static int firstRow = 0;
+	public static int secondRow = 1;
+	public static int thirdRow = 2;
 	
 	@BeforeAll
 	public static void beforeAll() {

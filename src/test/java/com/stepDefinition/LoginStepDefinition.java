@@ -33,7 +33,7 @@ public class LoginStepDefinition {
 	}
 	@When("the user enters valid mobile number as {string}")
 	public void the_user_enters_valid_mobile_number_as(String validmobile_no) {
-		int row = Hooks.currentRow;
+		int row = Hooks.firstRow;
 		validmobile_no = excelData[row][0]; 
 	    homepage.entervalidmobilenumber(validmobile_no);
 	}
@@ -47,7 +47,7 @@ public class LoginStepDefinition {
 	}
 	@When("the user enters invalid mobile number as {string}")
 	public void the_user_enters_invalid_mobile_number_as(String invalidmobile_no ) {
-		int row = Hooks.currentRow;
+		int row = Hooks.secondRow;
 		invalidmobile_no = excelData[row][0]; 
 		homepage.enterinvalidmobile_no(invalidmobile_no);
 		

@@ -106,6 +106,15 @@ public class ProfilePage {
 			Reporter.generateReport(driver,extTest,Status.FAIL,"Valid relation is not accepted");
 		}
 	}
+	public void entervalidemail(String email) {
+		try {
+			driver.findElement(Locators.emailinput).sendKeys(email);
+			Reporter.generateReport(driver,extTest,Status.PASS,"Valid email is accepted");
+		}catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Valid email is not accepted");
+		}
+	}
 	public void clicksaveandok() {
 		try {
 		driver.findElement(Locators.savebtn).click();
@@ -129,4 +138,53 @@ public class ProfilePage {
 		}
 		
 	}
-}
+	public void enterinvalidfirstname(String invalidfirstname) {
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement invalidfirstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.firstnameinput));
+			invalidfirstNameInput.sendKeys(invalidfirstname);
+			driver.findElement(Locators.lastnameinput).click();
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid first name is not accepted");
+			driver.findElement(Locators.profileclosebtn).click();
+			}catch(TimeoutException te) {
+				//fail the extent report
+				Reporter.generateReport(driver,extTest,Status.PASS,"Invalid first name is accepted");
+			}
+		}
+	public void enterinvalidlastname(String invalidlastname) {
+		try {
+			driver.findElement(Locators.lastnameinput).sendKeys(invalidlastname);
+			driver.findElement(Locators.dobinput).click();
+			 Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid last name is not accepted");
+			 driver.findElement(Locators.profileclosebtn).click();
+			}catch(TimeoutException te) {
+				//fail the extent report
+				Reporter.generateReport(driver,extTest,Status.PASS,"Valid last name is accepted");
+			}
+	}
+	public void enterinvaliddob(String invaliddob) {
+		try {
+			driver.findElement(Locators.dobinput).sendKeys(invaliddob);
+			driver.findElement(Locators.emailinput).click();
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid dob is not accepted");
+			
+			driver.findElement(Locators.profileclosebtn).click();
+			}catch(TimeoutException te) {
+				//fail the extent report
+				Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid dob is accepted");
+			}
+	}
+	public void enterinvalidemail(String invalidemail) {
+		try {
+			driver.findElement(Locators.emailinput).sendKeys(invalidemail);
+			driver.findElement(Locators.firstnameinput).click();
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid email is not accepted");
+			driver.findElement(Locators.profileclosebtn).click();
+		}catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid email is accepted");
+		}
+	}
+	}
+

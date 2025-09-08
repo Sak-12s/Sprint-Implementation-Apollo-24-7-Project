@@ -1,5 +1,8 @@
 package com.stepDefinition;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.setup.Base;
 
 import io.cucumber.java.After;
@@ -13,30 +16,36 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends Base {
 	
+	static ExtentSparkReporter spark;
+	static ExtentReports extReports;
+	static ExtentTest extTest;
 	
-	
+	public static int currentRow = 0;
 	
 	@BeforeAll
 	public static void beforeAll() {
-		
-		
+		spark = new ExtentSparkReporter("reports/ExtendReport.html");
+		extReports = new ExtentReports();
+		extReports.attachReporter(spark);
+		launchBrowser();
 	}
 	
 	@AfterAll
 	public static void afterAll() {
 		
+		extReports.flush();
 	}
 	
 	@Before
 	public void before(Scenario scenario) {
-		launchBrowser();
-		
-		
+		extTest = extReports.createTest(scenario.getName());
+			
 	}
 	
 	@After
 	public void after() {
-		Base.sleep();
+		//currentRow++;
+		
 		
 	}
 	

@@ -11,7 +11,7 @@ public class Base {
 	static final int TIME = 2000;
 	public static WebDriver driver;
 	
-	public void launchBrowser() {
+	public static void launchBrowser() {
 		Properties prop = PropertyReader.readProperties();
 		
 		if (prop.getProperty("Browser").equalsIgnoreCase("Chrome")) {
@@ -34,7 +34,7 @@ public class Base {
 			driver.manage().window().maximize();
 			
 		}
-		driver.get(prop.getProperty("URL"));
+		
 		
 	}
 	public static void sleep() {

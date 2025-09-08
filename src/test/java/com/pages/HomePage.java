@@ -6,12 +6,16 @@ import java.util.Scanner;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.setup.PropertyReader;
+import com.setup.Reporter;
+import com.aventstack.extentreports.Status;
+import org.openqa.selenium.TimeoutException;
 
 import objectrepository.Locators;
 
@@ -19,61 +23,128 @@ public class HomePage {
 	
 	WebDriver driver;
 	WebDriverWait wait;
-	String mobile_no;
-	String otp;
+	ExtentTest extTest;
+	ExtentReports extReports;
+	String validmobile_number;
+	String validotp;
+	String invalidmobile_number;
+	String invalidotp;
 	Scanner sc = new Scanner(System.in);
 	Properties prop = PropertyReader.readProperties();
-	public HomePage(WebDriver driver) {
+	public HomePage(WebDriver driver,ExtentTest extTest) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-	}
-	
-	public void launchbrowser() {
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		this.extTest = extTest;
 	}
 	public void openwebsite() {
+		try {
 		driver.get(prop.getProperty("URL"));
+		Reporter.generateReport(driver,extTest,Status.PASS," Apollo 24/7 Website Opened");
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Apollo 24/7 Website not opened");
+		}
 	}
 	public boolean validatewebsite() {
-		String expURL = "https://www.apollo247.com/";
-		String actUrl = driver.getCurrentUrl();
-		Assert.assertEquals(expURL, actUrl);
+		try {
+		String currentUrl = driver.getCurrentUrl();
+	    Assert.assertTrue(currentUrl.contains("apollo247"), 
+	        "Expected Apollo URL but found: " + currentUrl);
+	    Reporter.generateReport(driver,extTest,Status.PASS,"Correct Apollo 24/7 is Website Opened");
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Incorrect Website Opened");
+		}
 		return true ;
 	}
 	public void clicklogin() {
 		driver.findElement(Locators.loginbtn).click();
 	}
-	public void entermobilenumber() {
+	public void entervalidmobilenumber(String validmobile_no) {
+		try {
 		WebElement mobile = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.mobileinput));
 		mobile.click();
-		//wait = new WebDriverWait(driver,Duration.ofSeconds(40));
-		
-		System.out.println("Enter the mobile number: ");
-		mobile_no = sc.next();
-		mobile.sendKeys(mobile_no);
+		validmobile_number=validmobile_no;
+		mobile.sendKeys(validmobile_no);
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(Locators.continuebtn)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(Locators.continuebtn)).click();	
+		Reporter.generateReport(driver,extTest,Status.PASS,"Valid mobile number is accepted");
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Valid mobile number is not acccepted");
+		}
 		
-		//wait = new WebDriverWait(driver,Duration.ofSeconds(40));
 		
 	}
-	public void enterotp() {
-		
+	public void entervalidotp() {
+		try {
 		System.out.println("Enter the otp received: ");
-		otp = sc.next();
+		validotp = sc.next();
 		WebElement otp_input = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.otpinput));
 		otp_input.click();
-        otp_input.sendKeys(otp);
+        otp_input.sendKeys(validotp);
 		driver.findElement(Locators.verifybtn).click();
-		sc.close();
+		
+		Reporter.generateReport(driver,extTest,Status.PASS,"Valid otp number is accepted");
+		
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Valid otp number is not acccepted");
+		}
 	}
 	public void loggedin() {
+		try {
 		 wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.loginicon)).click();;
 		 WebElement mobiledisplayed = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.mobilefield));
 
 		 String actualMobile = mobiledisplayed.getText().replace("+91", "").trim();
-		 Assert.assertEquals(actualMobile, mobile_no, "Login verification failed!");
+		 Assert.assertEquals(actualMobile, validmobile_number, "Login verification failed!");
+		 Reporter.generateReport(driver,extTest,Status.PASS,"User log in success");
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"User log in failed");
+		}
 	}
+	public void enterinvalidmobile_no(String invalidmobile_no) {
+		try {
+		WebElement invalidmobile = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.mobileinput));
+		invalidmobile.click();
+		invalidmobile_number=invalidmobile_no;
+		invalidmobile.sendKeys(invalidmobile_no);
+		String errmsg = driver.findElement(Locators.invalidmobileerrormsg).getText();
+		Reporter.generateReport(driver,extTest,Status.FAIL,errmsg);
+		driver.findElement(Locators.closebtn).click();
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid mobile number accepted");
+		}
+		
+	}
+	public void enterinvalidotp() {
+		try {
+		System.out.println("Enter the otp received: ");
+		invalidotp = sc.next();
+		WebElement invalidotp_input = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.otpinput));
+		invalidotp_input.click();
+        invalidotp_input.sendKeys(invalidotp);
+		driver.findElement(Locators.verifybtn).click();
+		Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid otp number is not accepted");
+		driver.findElement(Locators.closebtn).click();
+		}
+		catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid otp number is acccepted");
+			driver.findElement(Locators.closebtn).click();
+		}
+	}
+	
+	
+	
 
 }

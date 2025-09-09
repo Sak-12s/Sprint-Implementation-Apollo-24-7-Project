@@ -8,6 +8,7 @@ public class Locators {
 	public static By mobileinput = By.xpath("//input[@title='Please enter mobile number']");
 	public static By continuebtn = By.xpath("//button[text()='Continue']");
 	public static By otpinput = By.xpath("//input[@title='Please enter the otp']");
+	public static By resendbtn = By.xpath("//span[text()='Resend OTP']");
 	                                      
 	public static By verifybtn = By.xpath("//button[text()='Verify']");
 	public static By loginicon = By.xpath("//*[@id=\"loginPopup\"]/img");
@@ -27,4 +28,8 @@ public class Locators {
 	public static By confirmbtn = By.xpath("//span[text()='CONFIRM']");
 	public static By okbtn = By.xpath("//span[text()='OK']");
 	public static By profileclosebtn = By.xpath("//button[@title='Close']");
+	
+	public static By notificationpreferencesbtn = By.xpath("//span[text()='Notification Preferences']");
+	public static By pushnotification = By.xpath("//span[text()='Push Notifications']/following::input[@type='checkbox'][1]");
+	public static By smsnotification = By.xpath("//span[text()='SMS Notifications']/following::input[@type='checkbox'][1]");
 }

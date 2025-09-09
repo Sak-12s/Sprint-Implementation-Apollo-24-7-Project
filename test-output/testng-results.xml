@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-08T22:39:32 IST" name="Default suite" finished-at="2025-09-08T22:40:37 IST" duration-ms="65518">
+  <suite started-at="2025-09-09T12:06:30 IST" name="Default suite" finished-at="2025-09-09T12:07:16 IST" duration-ms="45627">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-09-08T22:39:32 IST" name="Default test" finished-at="2025-09-08T22:40:37 IST" duration-ms="65518">
+    <test started-at="2025-09-09T12:06:30 IST" name="Default test" finished-at="2025-09-09T12:07:16 IST" duration-ms="45627">
       <class name="com.runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:39:32 IST" name="setUpClass" finished-at="2025-09-08T22:39:34 IST" duration-ms="2238" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:06:30 IST" name="setUpClass" finished-at="2025-09-09T12:06:33 IST" duration-ms="2157" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@c212536]]>
+                <![CDATA[org.testng.TestRunner@75527e36]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:39:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:39:39 IST" duration-ms="4848" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:06:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:06:37 IST" duration-ms="3968" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,11 +37,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:39:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:28 IST" duration-ms="48877" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:06:37 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:06:45 IST" duration-ms="8933" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verification of successful user login with valid mobile number and valid otp"]]>
+                <![CDATA["Verification of login failure with invalid inputs"]]>
               </value>
             </param>
             <param index="1">
@@ -53,11 +53,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:28 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:29 IST" duration-ms="1815" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:06:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:07:05 IST" duration-ms="19988" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verifivation of entering an invalid first name prevents profile addition"]]>
+                <![CDATA["Verification of successful user login with valid inputs"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verification of User Log in"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:07:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:07:09 IST" duration-ms="3286" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verification of entering invalid inputs prevents profile addition"]]>
               </value>
             </param>
             <param index="1">
@@ -69,11 +85,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:29 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:30 IST" duration-ms="492" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:07:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:07:14 IST" duration-ms="5608" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verifivation of entering an invalid last name prevents profile addition"]]>
+                <![CDATA["Verification of successful profile addition with all valid inputs"]]>
               </value>
             </param>
             <param index="1">
@@ -85,71 +101,39 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:30 IST" duration-ms="488" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:07:14 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:07:15 IST" duration-ms="799" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verifivation of entering an invalid dob prevents profile addition"]]>
+                <![CDATA["Verifictaion of enabling push notifications works successfully"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Addition of new Profile"]]>
+                <![CDATA["Verification of enabling notifications"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:31 IST" duration-ms="517" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:07:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-09T12:07:15 IST" duration-ms="264" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verifivation of entering an invalid email prevents profile addition"]]>
+                <![CDATA["Verification of enabling SMS notifications works successfully"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Addition of new Profile"]]>
+                <![CDATA["Verification of enabling notifications"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:31 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:34 IST" duration-ms="3071" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verification of successful profile addition with all valid inputs excluding email"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Addition of new Profile"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-09-08T22:40:37 IST" duration-ms="2633" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Verification of successful profile addition with all valid inputs including email"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Addition of new Profile"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-08T22:40:37 IST" name="tearDownClass" finished-at="2025-09-08T22:40:37 IST" duration-ms="483" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunner@4009e306]" started-at="2025-09-09T12:07:15 IST" name="tearDownClass" finished-at="2025-09-09T12:07:16 IST" duration-ms="550" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

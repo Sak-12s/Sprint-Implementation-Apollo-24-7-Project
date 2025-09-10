@@ -57,7 +57,7 @@ public class ProfilePage {
 	}
 	public void entervalidfirstname(String firstname) {
 		try {
-		
+		wait = new WebDriverWait(driver,Duration.ofSeconds(15));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement firstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.firstnameinput));
 		firstNameInput.sendKeys(firstname);
@@ -117,8 +117,10 @@ public class ProfilePage {
 	}
 	public void clicksaveandok() {
 		try {
-		driver.findElement(Locators.savebtn).click();
-		driver.findElement(Locators.confirmbtn).click();
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.savebtn)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.confirmbtn)).click();
+			wait = new WebDriverWait(driver,Duration.ofSeconds(40));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.okbtn)).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Save,Confirm and OK button is clicked");
 		}catch(TimeoutException te) {

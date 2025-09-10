@@ -11,7 +11,6 @@ When the user clicks on add new profile
 When the user enters the invalid dob as "<invaliddob>"
 When the user clicks on add new profile
 When the user enters the invalid email as "<invalidemail>"
-
 Scenario: Verification of successful profile addition with all valid inputs
 
 When the user clicks on add new profile

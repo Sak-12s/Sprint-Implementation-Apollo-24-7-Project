@@ -23,6 +23,10 @@ public class Hooks extends Base {
 	public static int firstRow = 0;
 	public static int secondRow = 1;
 	public static int thirdRow = 2;
+	public static int fourthRow = 3;
+	public static int fifthRow = 4;
+	public static int sixthRow = 5;
+	public static int seventhRow = 6;
 	
 	@BeforeAll
 	public static void beforeAll() {

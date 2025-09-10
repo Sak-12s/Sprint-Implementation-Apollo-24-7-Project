@@ -1,4 +1,3 @@
-@launch
 Feature: Launching the Browser
 
 

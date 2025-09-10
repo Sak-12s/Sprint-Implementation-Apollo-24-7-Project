@@ -34,20 +34,11 @@ public class Locators {
 	public static By smsnotification = By.xpath("//span[text()='SMS Notifications']/following::input[@type='checkbox'][1]");
 	
 	public static By homebtn = By.cssSelector("a.HeaderNew_logoOnly__0oTah");
-	public static By blogviewall = By.xpath("//*[@id=\"mainContainerCT\"]/div[1]/div[12]/header/a");
-	public static By healthtoolsbtn = By.xpath("//p[text()='Health Tools']");
+	public static By weightmanagement = By.xpath("//a[text()='Weight Management']");
+	public static By bmimeter = By.xpath("//li[@class='nav-item'][4]");
+	public static By heightinput = By.xpath("//input[@id='height']");
+	public static By weightinput = By.xpath("//input[@id='weight']");
+	public static By calculatebtn = By.id("calculateBMI");
+	public static By invaliderrmsg = By.xpath("//p[text()='Please enter valid height and weight']");
 	
-	public static By bmicalculatebtn = By.xpath("/html/body/main/div/div/div/div/div[1]/button/span");
-
-	////span[text()='I am a male']
-	public static By gendernext = By.xpath("//div[@class='styles_centerContainer__s_u6d']//button");
-	public static By ftclick = By.xpath("//div[text()='ft']");
-	public static By cmbtn = By.xpath("//li[text()='cm']");
-	public static By heightinput = By.xpath("//input");
-	public static By hightnext = By.xpath("/html/body/main/div/div/div[2]/div/div/div[2]/div[2]/button[2]");
-	public static By weightinput = By.xpath("//input");
-	public static By finalcalculatebtn = By.xpath("//span[text()='CALCULATE']");
-	////p[text()='Your BMI is Underweight']
-	/////h2[text()='98']
-	/////h4[text()='98']
 }

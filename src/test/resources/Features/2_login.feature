@@ -1,6 +1,4 @@
-@login
 Feature: Verification of User Log in
-@Ignore
 Scenario: Verification of login failure with invalid inputs
   Given the user is on the home page
   When the user clicks on login icon

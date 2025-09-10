@@ -143,6 +143,7 @@ public class HomePage {
 		 String actualMobile = mobiledisplayed.getText().replace("+91", "").trim();
 		 Assert.assertEquals(actualMobile, validmobile_number, "Login verification failed!");
 		 Reporter.generateReport(driver,extTest,Status.PASS,"User log in success");
+		 
 		}
 		catch(TimeoutException te) {
 			//fail the extent report

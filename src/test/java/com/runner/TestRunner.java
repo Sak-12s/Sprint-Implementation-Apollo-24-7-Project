@@ -5,15 +5,12 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features = {"src/test/resources/Features/1_launchBrowser.feature",
-		        "src/test/resources/Features/2_login.feature",
-		        "src/test/resources/Features/3_profileAddition.feature",
-		        "src/test/resources/Features/4_setNotificationPreferences.feature",
-		        "src\\test\\resources\\Features\\5_viewingPremiumInsurancePlans.feature",
-		        "src\\test\\resources\\Features\\6_weightMangement.feature"},
+		features = {"src\\test\\resources\\Features"},
+		
+		
 		glue = "com.stepDefinition",
-		plugin = {"pretty", "html:reports/cucumber-html-report.html"},
-		 tags = "not @Ignore"
+		plugin = {"pretty", "html:reports/cucumber-html-report.html"}
+		
 		
 		)
 

@@ -40,6 +40,7 @@ public class Hooks extends Base {
 	public static void afterAll() {
 		
 		extReports.flush();
+		driver.quit();
 	}
 	
 	@Before

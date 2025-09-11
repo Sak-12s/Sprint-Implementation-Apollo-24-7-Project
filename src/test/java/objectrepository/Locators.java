@@ -49,6 +49,8 @@ public class Locators {
 	public static By invaliderrmsg = By.xpath("//p[text()='Please enter valid height and weight']");
 	public static By bmivalue = By.id("bmiValue");
 	
+	public static By profileicon = By.xpath("//div[@title='Login/SignUp']");
+	
 	
 	
 }

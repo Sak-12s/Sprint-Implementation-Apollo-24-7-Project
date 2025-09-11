@@ -23,6 +23,7 @@ public class BodyMassIndexPage {
 	WebDriverWait wait;
 	ExtentTest extTest;
 	ExtentReports extReports;
+	String originalWindow;
 	public BodyMassIndexPage(WebDriver driver,ExtentTest extTest) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -38,7 +39,8 @@ public class BodyMassIndexPage {
 
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    boolean elementFound = false;
-	    String originalWindow = driver.getWindowHandle();
+	    originalWindow = driver.getWindowHandle();
+	    
 
 	    while (!elementFound) {
 	        try {
@@ -150,6 +152,11 @@ public class BodyMassIndexPage {
 				//fail the extent report
 				Reporter.generateReport(driver,extTest,Status.FAIL,"Valid inputs are not accepted");
 			}
+		
+	}
+	public void backtohomepage() {
+		driver.close();
+		
 	}
 
 }

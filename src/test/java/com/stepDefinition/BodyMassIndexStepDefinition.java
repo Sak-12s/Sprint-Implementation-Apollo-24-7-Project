@@ -76,6 +76,7 @@ public class BodyMassIndexStepDefinition {
 		decimalheight=excelData[row][7];
 		decimalweight = excelData[row][8];
 		bodymassindexpage.validinputs(decimalheight, decimalweight);
+		bodymassindexpage.backtohomepage();
 	}
 
 }

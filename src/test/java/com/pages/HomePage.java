@@ -137,7 +137,7 @@ public class HomePage {
 		}
 	public void loggedin() {
 		try {
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.loginicon)).click();;
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.loginicon)).click();
 		 WebElement mobiledisplayed = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.mobilefield));
 
 		 String actualMobile = mobiledisplayed.getText().replace("+91", "").trim();
@@ -182,6 +182,40 @@ public class HomePage {
 			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid otp number is acccepted");
 			driver.findElement(Locators.closebtn).click();
 		}
+	}
+	public void clickprofileicon() {
+		try {
+		
+		    String mainWindow = driver.getWindowHandles().iterator().next(); // first opened window
+		    driver.switchTo().window(mainWindow);
+		
+
+		 driver.findElement(Locators.profileicon).click();
+		 Reporter.generateReport(driver,extTest,Status.PASS,"Profile icon is clicked");
+		}catch(TimeoutException te) {
+			//fail the extent report
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Profile icon is not clicked");
+		}
+	}
+	public void clicklogout() {
+		try {
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.logoutbtn)).click();
+		 Reporter.generateReport(driver,extTest,Status.PASS,"Logout is clicked");
+		}
+	catch(TimeoutException te) {
+		//fail the extent report
+		Reporter.generateReport(driver,extTest,Status.FAIL,"Logout is not clicked");
+	}
+	}
+	public void checklogout() {
+		try {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.loginbtn));
+		Reporter.generateReport(driver,extTest,Status.PASS,"User is logged out");
+		}
+	catch(TimeoutException te) {
+		//fail the extent report
+		Reporter.generateReport(driver,extTest,Status.FAIL,"User is not logged out");
+	}
 	}
 	
 	

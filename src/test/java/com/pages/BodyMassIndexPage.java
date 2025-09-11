@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.setup.Base;
 import com.setup.Reporter;
 
 import objectrepository.Locators;
@@ -28,8 +29,12 @@ public class BodyMassIndexPage {
 		this.extTest = extTest;
 	}
 	public void clickweightmanagement() {
-	    driver.navigate().back();
-	    driver.navigate().back();
+		
+		    driver.navigate().back();
+		    driver.navigate().back();
+		    
+	
+		driver.findElement(Locators.homebtn).click();
 
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    boolean elementFound = false;
@@ -57,6 +62,7 @@ public class BodyMassIndexPage {
 	    }
 	}	
 	public void clickcalculatenowbtn() {
+	
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 	    boolean isVisible = false;
 
@@ -76,7 +82,13 @@ public class BodyMassIndexPage {
 	                js.executeScript("arguments[0].scrollIntoView(true);", calculateBtn);
 	                js.executeScript("window.scrollBy(0, 150);"); // leave room below for error message
 	                isVisible = true;
-	                Reporter.generateReport(driver, extTest, Status.PASS, "Calculate Now button and error message area are visible");
+	                driver.findElement(Locators.calculatebtn).click();
+	    	        String expt_errmsg = "Please enter valid height and weight";
+	    			String act_errmsg = driver.findElement(Locators.invaliderrmsg).getText();
+	    			if(expt_errmsg.equals(act_errmsg)) {
+	    	        Reporter.generateReport(driver,extTest,Status.FAIL,"Empty inputs are not accepted");
+	    			}
+	                
 	            }else {
 	                // Scroll down step by step until found
 	                js.executeScript("window.scrollBy(0, 300);");
@@ -86,17 +98,15 @@ public class BodyMassIndexPage {
 	            // Keep scrolling if element not found yet
 	            js.executeScript("window.scrollBy(0, 300);");
 	            try { Thread.sleep(500); } catch (InterruptedException ex) {}
+	            Reporter.generateReport(driver,extTest,Status.PASS,"Empty inputs are accepted");
 	        }
-	    }
-
-	}
-	
-
-
+	       
+			}
+	    
+		}
 	public void invalidinputs(String height,String weight) {
 		try {
-			System.out.println(height);
-			System.out.println(weight);
+			
 			driver.findElement(Locators.heightinput).sendKeys(Keys.CONTROL + "a");
 			driver.findElement(Locators.heightinput).sendKeys(Keys.BACK_SPACE);
 		driver.findElement(Locators.heightinput).sendKeys(height);
@@ -106,22 +116,35 @@ public class BodyMassIndexPage {
 		driver.findElement(Locators.calculatebtn).click();
 		String expt_errmsg = "Please enter valid height and weight";
 		String act_errmsg = driver.findElement(Locators.invaliderrmsg).getText();
-		if(expt_errmsg.equals(act_errmsg)) {
-			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid inputs are not accepted");
+		if (expt_errmsg.equals(act_errmsg)) {
+            Reporter.generateReport(driver, extTest, Status.FAIL, "Invalid inputs are not accepted");
+        } else {
+            String act_bmi = driver.findElement(Locators.bmivalue).getText();
+            double bmi_no = Double.parseDouble(act_bmi);
+
+            if (bmi_no == 0.0) {
+                Reporter.generateReport(driver, extTest, Status.FAIL, "Invalid inputs are accepted and wrong BMI is calculated (0.0)");
+            }
 		}
 		}
 		catch(TimeoutException te) {
-			//fail the extent report
-			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid inputs are accepted");
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid inputs are accepted");
 		}
 	}
 	public void validinputs(String height,String weight) {
 		try {
+			driver.findElement(Locators.heightinput).sendKeys(Keys.CONTROL + "a");
+			driver.findElement(Locators.heightinput).sendKeys(Keys.BACK_SPACE);
 			driver.findElement(Locators.heightinput).sendKeys(height);
+			driver.findElement(Locators.weightinput).sendKeys(Keys.CONTROL + "a");
+			driver.findElement(Locators.weightinput).sendKeys(Keys.BACK_SPACE);
 			driver.findElement(Locators.weightinput).sendKeys(weight);
 			driver.findElement(Locators.calculatebtn).click();
-			
+			String act_bmi = driver.findElement(Locators.bmivalue).getText();
+			double bmi_no = Double.parseDouble(act_bmi);
+			if(bmi_no>0.0) {
 			Reporter.generateReport(driver,extTest,Status.PASS,"Valid inputs are accepted");
+			}
 			}
 			catch(TimeoutException te) {
 				//fail the extent report

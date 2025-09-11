@@ -33,12 +33,22 @@ public class Locators {
 	public static By pushnotification = By.xpath("//span[text()='Push Notifications']/following::input[@type='checkbox'][1]");
 	public static By smsnotification = By.xpath("//span[text()='SMS Notifications']/following::input[@type='checkbox'][1]");
 	
-	public static By homebtn = By.cssSelector("a.HeaderNew_logoOnly__0oTah");
+	public static By buyinsurancebtn = By.xpath("//a[text()='Buy Insurance']");
+	public static By locationdropdown = By.xpath("//div[@class='LocationInsurance_dropdownWrap__pYgH0']");
+	public static By pincodeinput = By.xpath("//input[@placeholder='Enter 6 digit pincode']");
+	public static By submitpincodebtn = By.xpath("//button[text()='Submit']");
+	public static By viewplansbtn = By.xpath("//span[text()='View Plans']");
+	public static By checkviewplans = By.xpath("//p[text()='View Plans']");
+	
+	public static By homebtn = By.xpath("//*[@id=\"fixedHeaderCT\"]/div/div[1]/div[1]/div/a/img");
 	public static By weightmanagement = By.xpath("//a[text()='Weight Management']");
 	public static By bmimeter = By.xpath("//li[@class='nav-item'][4]");
 	public static By heightinput = By.xpath("//input[@id='height']");
 	public static By weightinput = By.xpath("//input[@id='weight']");
 	public static By calculatebtn = By.id("calculateBMI");
 	public static By invaliderrmsg = By.xpath("//p[text()='Please enter valid height and weight']");
+	public static By bmivalue = By.id("bmiValue");
+	
+	
 	
 }

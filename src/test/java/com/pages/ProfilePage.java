@@ -159,29 +159,29 @@ public class ProfilePage {
 			WebElement invalidfirstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(firstnameinput));
 			invalidfirstNameInput.sendKeys(invalidfirstname);
 			driver.findElement(lastnameinput).click();
-			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid first name is not accepted");
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid first name is not accepted");
 			driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
 				//fail the extent report
-				Reporter.generateReport(driver,extTest,Status.PASS,"Invalid first name is accepted");
+				Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid first name is accepted");
 			}
 		}
 	public void enterinvalidlastname(String invalidlastname) {
 		try {
 			driver.findElement(lastnameinput).sendKeys(invalidlastname);
 			driver.findElement(dobinput).click();
-			 Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid last name is not accepted");
+			 Reporter.generateReport(driver,extTest,Status.PASS,"Invalid last name is not accepted");
 			 driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
 				//fail the extent report
-				Reporter.generateReport(driver,extTest,Status.PASS,"Valid last name is accepted");
+				Reporter.generateReport(driver,extTest,Status.FAIL,"Valid last name is accepted");
 			}
 	}
 	public void enterinvaliddob(String invaliddob) {
 		try {
 			driver.findElement(dobinput).sendKeys(invaliddob);
 			driver.findElement(emailinput).click();
-			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid dob is not accepted");
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid dob is not accepted");
 			
 			driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
@@ -193,11 +193,11 @@ public class ProfilePage {
 		try {
 			driver.findElement(emailinput).sendKeys(invalidemail);
 			driver.findElement(firstnameinput).click();
-			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid email is not accepted");
+			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid email is not accepted");
 			driver.findElement(profileclosebtn).click();
 		}catch(TimeoutException te) {
 			//fail the extent report
-			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid email is accepted");
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid email is accepted");
 		}
 	}
 	}

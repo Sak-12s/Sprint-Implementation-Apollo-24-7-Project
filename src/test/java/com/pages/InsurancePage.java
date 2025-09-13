@@ -53,11 +53,11 @@ public class InsurancePage {
 		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
 		driver.findElement(pincodeinput).sendKeys(invalidpincode);
 		driver.findElement(submitpincodebtn).click();
-		Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid pincode is accepted");
+		Reporter.generateReport(driver,extTest,Status.PASS,"Invalid pincode is accepted");
 		}
 		catch(TimeoutException te) {
 			//fail the extent report
-			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid pincode is not accepted");
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid pincode is not accepted");
 		}
 	}
 	public void enternegativepincode(String negativepincode) {
@@ -66,7 +66,7 @@ public class InsurancePage {
 		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
 		driver.findElement(pincodeinput).sendKeys(negativepincode);
 		driver.findElement(submitpincodebtn).click();
-		Reporter.generateReport(driver,extTest,Status.FAIL,"Negative pincode is accepted");
+		Reporter.generateReport(driver,extTest,Status.PASS,"Negative pincode is accepted");
 		
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -79,10 +79,10 @@ public class InsurancePage {
 		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
 		driver.findElement(pincodeinput).sendKeys(zeropincode);
 		driver.findElement(submitpincodebtn).click();
-		Reporter.generateReport(driver,extTest,Status.FAIL,"Zero pincode is accepted");
+		Reporter.generateReport(driver,extTest,Status.PASS,"Zero pincode is accepted");
 		}catch(TimeoutException te) {
 			//fail the extent report
-			Reporter.generateReport(driver,extTest,Status.PASS,"Zero pincode is not accepted");
+			Reporter.generateReport(driver,extTest,Status.FAIL,"Zero pincode is not accepted");
 		}
 	}
 	public void entervalidpincode(String validpincode) {

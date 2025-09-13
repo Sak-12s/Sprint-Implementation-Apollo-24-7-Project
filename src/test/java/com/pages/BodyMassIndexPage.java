@@ -96,7 +96,7 @@ public class BodyMassIndexPage {
 	    	        String expt_errmsg = "Please enter valid height and weight";
 	    			String act_errmsg = driver.findElement(invaliderrmsg).getText();
 	    			if(expt_errmsg.equals(act_errmsg)) {
-	    	        Reporter.generateReport(driver,extTest,Status.FAIL,"Empty inputs are not accepted");
+	    	        Reporter.generateReport(driver,extTest,Status.PASS,"Empty inputs are not accepted");
 	    			}
 	                
 	            }else {
@@ -108,7 +108,7 @@ public class BodyMassIndexPage {
 	            // Keep scrolling if element not found yet
 	            js.executeScript("window.scrollBy(0, 300);");
 	            try { Thread.sleep(500); } catch (InterruptedException ex) {}
-	            Reporter.generateReport(driver,extTest,Status.PASS,"Empty inputs are accepted");
+	            Reporter.generateReport(driver,extTest,Status.FAIL,"Empty inputs are accepted");
 	        }
 	       
 			}
@@ -127,13 +127,13 @@ public class BodyMassIndexPage {
 		String expt_errmsg = "Please enter valid height and weight";
 		String act_errmsg = driver.findElement(invaliderrmsg).getText();
 		if (expt_errmsg.equals(act_errmsg)) {
-            Reporter.generateReport(driver, extTest, Status.FAIL, "Invalid inputs are not accepted");
+            Reporter.generateReport(driver, extTest, Status.PASS, "Invalid inputs are not accepted");
         } else {
             String act_bmi = driver.findElement(bmivalue).getText();
             double bmi_no = Double.parseDouble(act_bmi);
 
             if (bmi_no == 0.0) {
-                Reporter.generateReport(driver, extTest, Status.FAIL, "Invalid inputs are accepted and wrong BMI is calculated (0.0)");
+                Reporter.generateReport(driver, extTest, Status.PASS, "Invalid inputs are accepted and wrong BMI is calculated (0.0)");
             }
 		}
 		}

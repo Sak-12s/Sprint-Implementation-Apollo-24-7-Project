@@ -10,13 +10,13 @@ import com.parameters.ExcelReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class BodyMassIndexStepDefinition {
+public class BodyMassIndexSteps {
 	BodyMassIndexPage bodymassindexpage;
 	WebDriver driver = Hooks.driver;
 	ExtentTest extTest = Hooks.extTest;
 	static String[][] excelData;	
 	WebDriverWait wait;
-	 public BodyMassIndexStepDefinition() {
+	 public BodyMassIndexSteps() {
 	     
 	        this.bodymassindexpage = new BodyMassIndexPage(driver,extTest);
 	    }

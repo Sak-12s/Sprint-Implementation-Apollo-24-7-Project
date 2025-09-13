@@ -9,7 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LaunchBrowserStepDefinition {
+public class LaunchBrowserSteps {
 	HomePage homepage;
 
 	public static WebDriver driver = Hooks.driver;

@@ -11,7 +11,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ProfileAdditionStepDefinition {
+public class ProfileAdditionSteps {
 	ProfilePage profilepage;
 	WebDriver driver = Hooks.driver;
 	ExtentTest extTest = Hooks.extTest;

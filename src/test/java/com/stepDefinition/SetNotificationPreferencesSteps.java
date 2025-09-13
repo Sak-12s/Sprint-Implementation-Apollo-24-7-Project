@@ -9,7 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class SetNotificationPreferencesStepDefinition {
+public class SetNotificationPreferencesSteps {
 	NotificationPage notificationpage;
 
 	public static WebDriver driver = Hooks.driver;

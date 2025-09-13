@@ -11,7 +11,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LoginStepDefinition {
+public class LoginSteps {
 	HomePage homepage;
 	WebDriver driver = Hooks.driver;
 	ExtentTest extTest = Hooks.extTest;

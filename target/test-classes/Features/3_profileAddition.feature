@@ -1,6 +1,8 @@
 Feature: Addition of new Profile
-Scenario: Verification of entering invalid inputs prevents profile addition
+Background:
 Given the user is on the home page
+Scenario: Verification of entering invalid inputs prevents profile addition
+
 When the user clicks on login icon
 When the user clicks on the manage family members
 When the user clicks on add new profile

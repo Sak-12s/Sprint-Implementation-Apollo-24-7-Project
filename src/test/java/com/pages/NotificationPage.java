@@ -2,6 +2,7 @@ package com.pages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,15 +15,15 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.setup.Reporter;
 
-import objectrepository.Locators;
-
 public class NotificationPage {
 	WebDriver driver;
 	WebDriverWait wait;
 	ExtentTest extTest;
 	ExtentReports extReports;
 	
-	
+	public static By notificationpreferencesbtn = By.xpath("//span[text()='Notification Preferences']");
+	public static By pushnotification = By.xpath("//span[text()='Push Notifications']/following::input[@type='checkbox'][1]");
+	public static By smsnotification = By.xpath("//span[text()='SMS Notifications']/following::input[@type='checkbox'][1]");
 	
 	public NotificationPage(WebDriver driver,ExtentTest extTest) {
 		this.driver = driver;
@@ -31,7 +32,7 @@ public class NotificationPage {
 	}
 	public void clicknotificationprefereces() {
 		try {
-		driver.findElement(Locators.notificationpreferencesbtn).click();
+		driver.findElement(notificationpreferencesbtn).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Notification Preferences is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -40,7 +41,7 @@ public class NotificationPage {
 	}
 	public void enablepushnotification() {
 		try {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.pushnotification)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(pushnotification)).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Push notification is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -50,7 +51,7 @@ public class NotificationPage {
 	public void verifypushenabled() {
 	
 		
-		 WebElement pushToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.pushnotification));
+		 WebElement pushToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(pushnotification));
 	        boolean isEnabled = pushToggle.isSelected() || pushToggle.getAttribute("checked") != null;
 
 	        if (isEnabled) {
@@ -66,7 +67,7 @@ public class NotificationPage {
 	}
 	public void enablesmsnotification() {
 		try {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.smsnotification)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(smsnotification)).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"SMS notification is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -75,7 +76,7 @@ public class NotificationPage {
 	}
 	public void verifysmsenabled() {
 	
-		WebElement smsToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.smsnotification));
+		WebElement smsToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(smsnotification));
         boolean isEnabled = smsToggle.isSelected() || smsToggle.getAttribute("checked") != null;
 
         if (isEnabled) {

@@ -2,6 +2,7 @@ package com.pages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
@@ -15,13 +16,19 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.setup.Reporter;
 
-import objectrepository.Locators;
-
 public class InsurancePage {
 	WebDriver driver;
 	WebDriverWait wait;
 	ExtentTest extTest;
 	ExtentReports extReports;
+	
+	public static By buyinsurancebtn = By.xpath("//a[text()='Buy Insurance']");
+	public static By locationdropdown = By.xpath("//div[@class='LocationInsurance_dropdownWrap__pYgH0']");
+	public static By pincodeinput = By.xpath("//input[@placeholder='Enter 6 digit pincode']");
+	public static By submitpincodebtn = By.xpath("//button[text()='Submit']");
+	public static By viewplansbtn = By.xpath("//span[text()='View Plans']");
+	public static By checkviewplans = By.xpath("//p[text()='View Plans']");
+	
 	public InsurancePage(WebDriver driver,ExtentTest extTest) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -29,7 +36,7 @@ public class InsurancePage {
 	}
 	public void clickbuyinsurance() {
 		try {
-		driver.findElement(Locators.buyinsurancebtn).click();
+		driver.findElement(buyinsurancebtn).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Buy insurance is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -38,14 +45,14 @@ public class InsurancePage {
 	}
 	public void clicklocation() {
 	
-		driver.findElement(Locators.locationdropdown).click();
+		driver.findElement(locationdropdown).click();
 	}
 	public void enterinvalidpincode(String invalidpincode) {
 		try {
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.CONTROL + "a");
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.BACK_SPACE);
-		driver.findElement(Locators.pincodeinput).sendKeys(invalidpincode);
-		driver.findElement(Locators.submitpincodebtn).click();
+		driver.findElement(pincodeinput).sendKeys(Keys.CONTROL + "a");
+		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
+		driver.findElement(pincodeinput).sendKeys(invalidpincode);
+		driver.findElement(submitpincodebtn).click();
 		Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid pincode is accepted");
 		}
 		catch(TimeoutException te) {
@@ -55,10 +62,10 @@ public class InsurancePage {
 	}
 	public void enternegativepincode(String negativepincode) {
 		try {
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.CONTROL + "a");
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.BACK_SPACE);
-		driver.findElement(Locators.pincodeinput).sendKeys(negativepincode);
-		driver.findElement(Locators.submitpincodebtn).click();
+		driver.findElement(pincodeinput).sendKeys(Keys.CONTROL + "a");
+		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
+		driver.findElement(pincodeinput).sendKeys(negativepincode);
+		driver.findElement(submitpincodebtn).click();
 		Reporter.generateReport(driver,extTest,Status.FAIL,"Negative pincode is accepted");
 		
 		}catch(TimeoutException te) {
@@ -68,10 +75,10 @@ public class InsurancePage {
 	}
 	public void enterzeropincode(String zeropincode) {
 		try {
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.CONTROL + "a");
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.BACK_SPACE);
-		driver.findElement(Locators.pincodeinput).sendKeys(zeropincode);
-		driver.findElement(Locators.submitpincodebtn).click();
+		driver.findElement(pincodeinput).sendKeys(Keys.CONTROL + "a");
+		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
+		driver.findElement(pincodeinput).sendKeys(zeropincode);
+		driver.findElement(submitpincodebtn).click();
 		Reporter.generateReport(driver,extTest,Status.FAIL,"Zero pincode is accepted");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -80,10 +87,10 @@ public class InsurancePage {
 	}
 	public void entervalidpincode(String validpincode) {
 		try {
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.CONTROL + "a");
-		driver.findElement(Locators.pincodeinput).sendKeys(Keys.BACK_SPACE);
-		driver.findElement(Locators.pincodeinput).sendKeys(validpincode);
-		driver.findElement(Locators.submitpincodebtn).click();
+		driver.findElement(pincodeinput).sendKeys(Keys.CONTROL + "a");
+		driver.findElement(pincodeinput).sendKeys(Keys.BACK_SPACE);
+		driver.findElement(pincodeinput).sendKeys(validpincode);
+		driver.findElement(submitpincodebtn).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Valid pincode is accepted");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -95,7 +102,7 @@ public class InsurancePage {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
         WebElement viewPlansBtn = wait.until(
-                ExpectedConditions.presenceOfElementLocated(Locators.viewplansbtn)
+                ExpectedConditions.presenceOfElementLocated(viewplansbtn)
         );
 
         js.executeScript("arguments[0].scrollIntoView({block: 'center'});", viewPlansBtn);
@@ -113,7 +120,7 @@ public class InsurancePage {
 	}
 	public void checkplansdisplayed() {
 		try {
-		driver.findElement(Locators.checkviewplans);
+		driver.findElement(checkviewplans);
 		Reporter.generateReport(driver,extTest,Status.PASS,"Plans are displayed");
 		}catch(TimeoutException te) {
 			//fail the extent report

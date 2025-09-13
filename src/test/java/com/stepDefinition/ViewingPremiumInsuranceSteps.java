@@ -11,13 +11,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ViewingPremiumInsuranceStepDefinition {
+public class ViewingPremiumInsuranceSteps {
 	InsurancePage insurancepage;
 	WebDriver driver = Hooks.driver;
 	ExtentTest extTest = Hooks.extTest;
 	static String[][] excelData;	
 	WebDriverWait wait;
-	 public ViewingPremiumInsuranceStepDefinition() {
+	 public ViewingPremiumInsuranceSteps() {
 	     
 	        this.insurancepage = new InsurancePage(driver,extTest);
 	        if (excelData == null) {

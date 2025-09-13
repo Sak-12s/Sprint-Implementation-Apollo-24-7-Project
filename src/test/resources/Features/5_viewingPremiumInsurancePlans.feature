@@ -1,6 +1,8 @@
 Feature: Viewing Premium Plans for Insurance
-Scenario: Verification viewing premium insurance plans for user location
+Background:
 Given the user clicks on Buy Insurance
+Scenario: Verification viewing premium insurance plans for user location
+
 When the user clicks on location
 When the user enters invalid pincode as "<invalidpincode>" in the location
 When the user enters negative value as "<negativepincode>" for pincode in the location

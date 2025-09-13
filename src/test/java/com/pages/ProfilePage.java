@@ -17,14 +17,26 @@ import com.aventstack.extentreports.Status;
 import com.setup.PropertyReader;
 import com.setup.Reporter;
 
-import objectrepository.Locators;
-
 public class ProfilePage {
 
 	WebDriver driver;
 	WebDriverWait wait;
 	ExtentTest extTest;
 	ExtentReports extReports;
+	
+	public static By managefamilymembersbtn = By.xpath("//a[@href='/my-account']");
+	public static By addnewbtn = By.xpath("//span[text()='Add New Profile']");
+	public static By firstnameinput = By.xpath("//input[@placeholder='First Name']");
+	public static By lastnameinput = By.xpath("//input[@placeholder='Last name']");
+	public static By dobinput = By.xpath("//input[@placeholder='dd/mm/yyyy']");
+	public static By relationdropdown = By.xpath("/html/body/main/div/div/div/div[2]/div/div[4]/div/div[2]/div[1]/div/div[3]/div/div");
+	public static By emailinput = By.xpath("//input[@placeholder='name@email.com']");
+	public static By savebtn = By.xpath("//span[text()='Save']");
+	public static By confirmbtn = By.xpath("//span[text()='CONFIRM']");
+	public static By okbtn = By.xpath("//span[text()='OK']");
+	public static By profileclosebtn = By.xpath("//button[@title='Close']");
+	public static By loginicon = By.xpath("//*[@id=\"loginPopup\"]/img");
+	
 	String firstName;
 	String lastName;
 	Properties prop = PropertyReader.readProperties();
@@ -37,8 +49,8 @@ public class ProfilePage {
 	public void click_on_manage_family_member() {
 		try {
 		
-		driver.findElement(Locators.loginicon).click();
-		driver.findElement(Locators.managefamilymembersbtn).click();
+		driver.findElement(loginicon).click();
+		driver.findElement(managefamilymembersbtn).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Manage Family Member is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -47,7 +59,7 @@ public class ProfilePage {
 	}
 	public void click_on_add_new_profile() {
 		try {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.addnewbtn)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(addnewbtn)).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Add New Profile is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -59,7 +71,7 @@ public class ProfilePage {
 		try {
 		wait = new WebDriverWait(driver,Duration.ofSeconds(15));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement firstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.firstnameinput));
+		WebElement firstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(firstnameinput));
 		firstNameInput.sendKeys(firstname);
 		this.firstName = firstname; 
 		Reporter.generateReport(driver,extTest,Status.PASS,"Valid first name is accepted");
@@ -70,7 +82,7 @@ public class ProfilePage {
 	}
 	public void entervalidlastname(String lastname) {
 		try {
-		driver.findElement(Locators.lastnameinput).sendKeys(lastname);
+		driver.findElement(lastnameinput).sendKeys(lastname);
 		 this.lastName = lastname; 
 		 Reporter.generateReport(driver,extTest,Status.PASS,"Valid last name is accepted");
 		}catch(TimeoutException te) {
@@ -80,7 +92,7 @@ public class ProfilePage {
 	}
 	public void entervaliddob(String dob) {
 		try {
-		driver.findElement(Locators.dobinput).sendKeys(dob);
+		driver.findElement(dobinput).sendKeys(dob);
 		Reporter.generateReport(driver,extTest,Status.PASS,"Valid dob is accepted");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -98,7 +110,7 @@ public class ProfilePage {
 	}
 	public void selectrelation(String relation) {
 		try {
-		driver.findElement(Locators.relationdropdown).click();
+		driver.findElement(relationdropdown).click();
 		driver.findElement(By.xpath("//li[text()='"+relation+"']")).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Valid relation is accepted");
 		}catch(TimeoutException te) {
@@ -108,7 +120,7 @@ public class ProfilePage {
 	}
 	public void entervalidemail(String email) {
 		try {
-			driver.findElement(Locators.emailinput).sendKeys(email);
+			driver.findElement(emailinput).sendKeys(email);
 			Reporter.generateReport(driver,extTest,Status.PASS,"Valid email is accepted");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -118,10 +130,10 @@ public class ProfilePage {
 	public void clicksaveandok() {
 		try {
 			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.savebtn)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.confirmbtn)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(savebtn)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(confirmbtn)).click();
 			wait = new WebDriverWait(driver,Duration.ofSeconds(40));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.okbtn)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(okbtn)).click();
 		Reporter.generateReport(driver,extTest,Status.PASS,"Save,Confirm and OK button is clicked");
 		}catch(TimeoutException te) {
 			//fail the extent report
@@ -144,11 +156,11 @@ public class ProfilePage {
 		try {
 			
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement invalidfirstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.firstnameinput));
+			WebElement invalidfirstNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(firstnameinput));
 			invalidfirstNameInput.sendKeys(invalidfirstname);
-			driver.findElement(Locators.lastnameinput).click();
+			driver.findElement(lastnameinput).click();
 			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid first name is not accepted");
-			driver.findElement(Locators.profileclosebtn).click();
+			driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
 				//fail the extent report
 				Reporter.generateReport(driver,extTest,Status.PASS,"Invalid first name is accepted");
@@ -156,10 +168,10 @@ public class ProfilePage {
 		}
 	public void enterinvalidlastname(String invalidlastname) {
 		try {
-			driver.findElement(Locators.lastnameinput).sendKeys(invalidlastname);
-			driver.findElement(Locators.dobinput).click();
+			driver.findElement(lastnameinput).sendKeys(invalidlastname);
+			driver.findElement(dobinput).click();
 			 Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid last name is not accepted");
-			 driver.findElement(Locators.profileclosebtn).click();
+			 driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
 				//fail the extent report
 				Reporter.generateReport(driver,extTest,Status.PASS,"Valid last name is accepted");
@@ -167,11 +179,11 @@ public class ProfilePage {
 	}
 	public void enterinvaliddob(String invaliddob) {
 		try {
-			driver.findElement(Locators.dobinput).sendKeys(invaliddob);
-			driver.findElement(Locators.emailinput).click();
+			driver.findElement(dobinput).sendKeys(invaliddob);
+			driver.findElement(emailinput).click();
 			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid dob is not accepted");
 			
-			driver.findElement(Locators.profileclosebtn).click();
+			driver.findElement(profileclosebtn).click();
 			}catch(TimeoutException te) {
 				//fail the extent report
 				Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid dob is accepted");
@@ -179,10 +191,10 @@ public class ProfilePage {
 	}
 	public void enterinvalidemail(String invalidemail) {
 		try {
-			driver.findElement(Locators.emailinput).sendKeys(invalidemail);
-			driver.findElement(Locators.firstnameinput).click();
+			driver.findElement(emailinput).sendKeys(invalidemail);
+			driver.findElement(firstnameinput).click();
 			Reporter.generateReport(driver,extTest,Status.FAIL,"Invalid email is not accepted");
-			driver.findElement(Locators.profileclosebtn).click();
+			driver.findElement(profileclosebtn).click();
 		}catch(TimeoutException te) {
 			//fail the extent report
 			Reporter.generateReport(driver,extTest,Status.PASS,"Invalid email is accepted");

@@ -1,6 +1,8 @@
 Feature: Verification of User Log in
+Background:
+ Given the user is on the home page
 Scenario: Verification of login failure with invalid inputs
-  Given the user is on the home page
+
   When the user clicks on login icon
   When the user enters invalid mobile number as "<invalid_mobile_no>"
   Then an error message is displayed "Invalid mobile number"
@@ -11,7 +13,7 @@ Scenario: Verification of login failure with invalid inputs
   Then an error message is displayed "Invalid OTP"
   
 Scenario: Verification of successful user login with valid inputs
-Given the user is on the home page
+
 When the user clicks on login icon
 When the user enters valid mobile number as "<mobile_no>"
 When the user enters valid otp

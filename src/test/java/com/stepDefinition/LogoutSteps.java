@@ -10,7 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LogoutStepDefinition {
+public class LogoutSteps {
 	
 	HomePage homepage;
 	WebDriver driver = Hooks.driver;

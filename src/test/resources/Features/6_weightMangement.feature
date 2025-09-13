@@ -1,4 +1,6 @@
 Feature: Accessing Weight Management
+
+
 Scenario: Verification of failed BMI Calculation
 Given the user selects on weight management in home page
 When the user clicks on BMI meter
